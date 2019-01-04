@@ -21,29 +21,27 @@ class DestinationsController extends Controller
 
     public function store()
     {
-    	$destination = new Destination();
+    	Destination::create(request(['name', 'title', 'code']));
 
-    	$destination->name = request('name');
-    	$destination->code = request('code');
-    	$destination->title = request('title');
-
-    	$destination->save();
     	return redirect('/destinations'); 
     }
 
-    public function edit($id)
+    public function edit(Destination $destination)
     {
-    	$destinations = Destination::find($id);
     	return view('destinations.edit', compact('destinations'));
     }
 
-    public function update()
+    public function update(Destination $destination)
     {
-    	dd('hello');
+        $destination->update(request(['name', 'title', 'code']));
+        return redirect('/destinations');
     }
 
-    public function destroy()
+    public function destroy(Destination $destination)
     {
+        $destination->delete();
+
+        return redirect('/destinations');
 
     }
 }

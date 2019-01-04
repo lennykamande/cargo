@@ -42,6 +42,7 @@
                                         <h4 class="header-title">Add Destination</h4>
                                         <form method="POST" action="/destinations/{{ $destinations->id }}">
                                             {{ method_field('PATCH') }}
+                                            {{ csrf_field() }}
                                             <div class="form-group">
                                                 <label for="name">Destination Name</label>
                                                 <input type="text" class="form-control" id="name" name="name" placeholder="Destination Name" value="{{ $destinations->name }} ">

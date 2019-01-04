@@ -44,15 +44,15 @@
                                             {{ csrf_field() }}
                                             <div class="form-group">
                                                 <label for="name">Destination Name</label>
-                                                <input type="text" class="form-control" id="name" name="name" placeholder="Destination Name">
+                                                <input type="text" class="form-control" name="name" placeholder="Destination Name" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="code">Destination Code</label>
-                                                <input type="text" class="form-control" id="code" name="code" placeholder="IATA Code">
+                                                <input type="text" class="form-control" name="code" placeholder="IATA Code" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="title">Destination Title</label>
-                                                <input type="text" class="form-control" id="title" name="title" placeholder="Destination Title">
+                                                <input type="text" class="form-control" name="title" placeholder="Destination Title" required>
                                             </div>
                                             <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Submit</button>
                                         </form>

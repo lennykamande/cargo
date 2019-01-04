@@ -16,10 +16,10 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
-            $table->string('from');
-            $table->string('destination');
+            $table->unsignedInteger('from');
+            $table->unsignedInteger('destination');
             $table->string('total');
-            $table->string('paystatus');
+            $table->boolean('paystatus')->default(false);
             $table->string('bookingstatus');
             $table->string('productno');
             $table->string('client');

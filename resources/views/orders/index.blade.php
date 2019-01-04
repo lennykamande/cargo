@@ -63,52 +63,29 @@
                                 <tbody>
                                     <tr class="heading-td">
                                         <td>Product Name</td>
+                                        <td>Product Name</td>
                                         <td>Product Code</td>
                                         <td>Order Status</td>
-                                        <td>Client Number</td>
-                                        <td>Zip Code</td>
+                                        <td>Amount </td>
+                                        <td>Client</td>
                                         <td>View Order</td>
                                     </tr>
+                                   @foreach ($orders as $order)
                                     <tr>
-                                        <td>Ladis Sunglass</td>
-                                        <td>#894750374</td>
-                                        <td><span class="status-p bg-primary">Pending</span></td>
-                                        <td>01976 74 92 00</td>
-                                        <td>9241</td>
-                                        <td><a href="#" class="btn btn-outline-success mb-3"> View Order</a></td>
+                                        <td>{{ $order->id }}</td>
+                                        <td>{{ $order->description }}</td>
+                                        <td>{{ $order->productno }}</td>
+                                        <td>
+                                            @if($order->bookingstatus =='Pending')
+                                            <span class="status-p bg-primary">Pending</span></td>
+                                            @else
+                                            <span class="status-p bg-success">Completed</span></td>
+                                            @endif
+                                        <td>Ksh {{ $order->total }}</td>
+                                        <td>{{ $order->client }}</td>
+                                        <td><a href="/orders/{{$order->id}}/edit" class="btn btn-outline-success mb-3"> View Order</a></td>
                                     </tr>
-                                    <tr>
-                                        <td>Ladis Sunglass</td>
-                                        <td>#894750374</td>
-                                        <td><span class="status-p bg-warning">Shipment</span></td>
-                                        <td>01976 74 92 00</td>
-                                        <td>9241</td>
-                                        <td><a href="#" class="btn btn-outline-success mb-3"> View Order</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ladis Sunglass</td>
-                                        <td>#894750374</td>
-                                        <td><span class="status-p bg-primary">Pending</span></td>
-                                        <td>01976 74 92 00</td>
-                                        <td>9241</td>
-                                        <td><a href="#" class="btn btn-outline-success mb-3"> View Order</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ladis Sunglass</td>
-                                        <td>#894750374</td>
-                                        <td><span class="status-p bg-success">Confirmed </span></td>
-                                        <td>01976 74 92 00</td>
-                                        <td>9241</td>
-                                        <td><a href="#" class="btn btn-outline-success mb-3"> View Order</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ladis Sunglass</td>
-                                        <td>#894750374</td>
-                                        <td><span class="status-p bg-primary">Pending</span></td>
-                                        <td>01976 74 92 00</td>
-                                        <td>9241</td>
-                                        <td><a href="#" class="btn btn-outline-success mb-3"> View Order</a></td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

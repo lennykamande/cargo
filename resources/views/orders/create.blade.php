@@ -1,5 +1,5 @@
  @section('title')
- Orders
+ App
  @endsection
 
  @extends('layouts.admin')
@@ -11,8 +11,8 @@
                         <div class="breadcrumbs-area clearfix">
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="/">Home</a></li>
-                                <li><span>Add Order</span></li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><span>Form</span></li>
                             </ul>
                         </div>
                     </div>
@@ -39,33 +39,58 @@
                             <div class="col-12 mt-5">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">Basic form</h4>
-                                        <form>
+                                        <h4 class="header-title">Add Order</h4>
+                                        <form method="POST" action="/orders">
+                                            {{ csrf_field() }}
                                             <div class="form-group">
-                                                <label for="description">Item Description</label>
-                                                <input type="text" class="form-control" id="description" aria-describedby="descriptionHelp" placeholder="Enter Description">
-                                                <!--<small id="emailHelp" class="form-text text-muted">We'll never share your
-                                                    email with anyone else.</small>-->
+                                                <label for="name">Product Name</label>
+                                                <input type="text" class="form-control" id="name" name="description" placeholder="Product Name" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="description">Item Description</label>
-                                                <input type="text" class="form-control" id="description" aria-describedby="descriptionHelp" placeholder="Enter Description">
-                                                <!--<small id="emailHelp" class="form-text text-muted">We'll never share your
-                                                    email with anyone else.</small>-->
+                                                <label for="origin">Origin</label>
+                                                <select class="custom-select">
+                                                <option id="from"selected="selected">Select Origin</option>
+                                                @foreach ($destinations as $destination)
+                                                <option value="{{ $destination->id }}"> {{ $destination->name }}</option>
+                                               @endforeach
+                                            </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="description">Item Description</label>
-                                                <input type="text" class="form-control" id="description" aria-describedby="descriptionHelp" placeholder="Enter Description">
-                                                <!--<small id="emailHelp" class="form-text text-muted">We'll never share your
-                                                    email with anyone else.</small>-->
+                                                <label for="title">Destination</label>
+                                                <select class="custom-select">
+                                                <option id="destination"selected="selected">Select Destination</option>
+                                                @foreach ($destinations as $destination)
+                                                <option value="{{ $destination->id }}"> {{ $destination->name }}</option>
+                                                @endforeach
+                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="description">Item Description</label>
-                                                <input type="text" class="form-control" id="description" aria-describedby="descriptionHelp" placeholder="Enter Description">
-                                                <!--<small id="emailHelp" class="form-text text-muted">We'll never share your
-                                                    email with anyone else.</small>-->
+                                                <label for="total">Total</label>
+                                                <input type="text" class="form-control" id="total" name="total" placeholder="Payment Total" required>
                                             </div>
-                                            
+                                            <div class="form-group">
+                                                <label for="title">Payment Status</label>
+                                                <select class="custom-select">
+                                                <option id="paystatus" selected="selected">Pay Status</option>
+                                                <option value="1"> False</option>
+                                                <option value="0"> True</option>
+                                            </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="title">Booking Status</label>
+                                                <input type="text" class="form-control" id="bookingstatus" name="bookingstatus" placeholder="Booking Status" required>
+                                            </div>
+                                        
+                                            <div class="form-group">
+                                                <label for="title">Client</label>
+                                                <input type="text" class="form-control" id="client" name="client" placeholder="Client Name" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="productno">Product Number</label>
+                                                <input type="text" class="form-control" id="productno" name="productno" placeholder="Product No" required>
+                                            </div>
+
                                             <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Submit</button>
                                         </form>
                                     </div>
